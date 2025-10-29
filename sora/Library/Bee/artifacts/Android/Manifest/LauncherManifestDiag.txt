@@ -1,2 +1,0 @@
-Using template '/Users/sora/Downloads/OwnerApplication/2022.3.62f2c1/PlaybackEngines/AndroidPlayer/Apk/LauncherManifest.xml'
-
