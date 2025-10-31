@@ -5,7 +5,18 @@ using UnityEngine;
 public class PlayerController
 {
     private GameObject _player;
+    private Transform _playerTransform;
     private BasicControll _basicControl;
+
+    GridBuildingSystem gridBuildingSystem;
+    int currentX;
+    int currentZ;
+
+
+    /// <summary>
+    /// 已经过去的时间
+    /// </summary>
+    private float passDelta;
 
     CameraController cameraController;
 
@@ -17,14 +28,40 @@ public class PlayerController
 
         cameraController = new CameraController();
         cameraController.SetChasingTarget(_player.transform);
+
+        GameObject gameLoop = GameObject.Find("GameLoop");
+        gridBuildingSystem = gameLoop.GetComponent<GridBuildingSystem>();
+
+        currentX = 0;
+        currentZ = 0;
+        _playerTransform = _player.transform;
+        UpdatePosition();
     }
 
     public void OnUpdate()
     {
         Vector2 moveInput = _basicControl.BasicControl.Move.ReadValue<Vector2>();
-        Rigidbody rigidbody = _player.GetComponent<Rigidbody>();
-        rigidbody.velocity = new Vector3(moveInput.x, rigidbody.velocity.y, moveInput.y);
+        Debug.Log($"{moveInput}");
+        passDelta += Time.deltaTime;
+        if (passDelta > 1)
+        {
+            passDelta %= 1;
+            if (moveInput.magnitude > 0)
+            {
+                currentX += (int)moveInput.x;
+                currentZ += (int)moveInput.y;
+                UpdatePosition();
+            }
+        }
 
         cameraController.OnUpdate();
+    }
+
+    private void UpdatePosition()
+    {
+        float originY = _playerTransform.position.y;
+        _playerTransform.position = gridBuildingSystem.grid.GetWorldPosition(currentX, currentZ) + gridBuildingSystem.grid.GetCellHalfSize();
+        _playerTransform.position = new Vector3(_playerTransform.position.x, originY, _playerTransform.position.z);
+ 
     }
 }

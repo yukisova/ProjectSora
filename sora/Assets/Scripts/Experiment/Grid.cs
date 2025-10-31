@@ -26,22 +26,23 @@ public class GridXZ<T>
             for (int z = 0; z < gridArray.GetLength(1); z++)
             {
                 // 绘制坐标文本
-                debugTextArray[x, z] = Utils.CreateWorldText("0", null, GetWorldPosition(x, z) + new Vector3(cellSize, 0, cellSize) * .5f, 10, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x, z] = Utils.CreateWorldText(createGridObject(this, x, z).ToString(), null, GetWorldPosition(x, z) + GetCellHalfSize(), 10, Color.white, TextAnchor.MiddleCenter);
                 debugTextArray[x, z].transform.rotation = Quaternion.Euler(90, 0, 0);
                 // 绘制网格线（）
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x + 1, z), Color.white, 100f);
+
             }
         }
         Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
     }
 
-    private Vector3 GetWorldPosition(int x, int z)
+    public Vector3 GetWorldPosition(int x, int z)
     {
         return new Vector3(x, 0, z) * cellSize + originPosition;
     }
-    private void GetXZ(Vector3 worldPosition, out int x, out int z)
+    public void GetXZ(Vector3 worldPosition, out int x, out int z)
     {
         x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
         z = Mathf.FloorToInt((worldPosition - originPosition).z / cellSize);
@@ -54,6 +55,11 @@ public class GridXZ<T>
     public int GetHeight()
     {
         return height;
+    }
+
+    public Vector3 GetCellHalfSize()
+    {
+        return new Vector3(cellSize, 0, cellSize) * 0.5f;
     }
 
     /// <summary>
@@ -100,5 +106,14 @@ public class GridXZ<T>
         int x, z;
         GetXZ(worldPosition, out x, out z);
         return GetValue(x, z);
+    }
+
+    /// <summary>
+    /// 修改网格中的信息（如果没有完成的话进行一定的修复）
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="z"></param>
+    public void TriggerGridObjectChanged(int x, int z)
+    {
     }
 }
