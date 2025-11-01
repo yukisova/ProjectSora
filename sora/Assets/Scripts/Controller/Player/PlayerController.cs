@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController
+public class PlayerController: AController
 {
     private GameObject _player;
     private Transform _playerTransform;
@@ -20,8 +20,11 @@ public class PlayerController
 
     CameraController cameraController;
 
-    public PlayerController() : base()
+    public PlayerController() : base(){}
+    protected override void OnInit()
     {
+        base.OnInit();
+
         _basicControl = new BasicControll();
         _basicControl.Enable();
         _player = GameObject.FindWithTag("Player");
@@ -38,7 +41,7 @@ public class PlayerController
         UpdatePosition();
     }
 
-    public void OnUpdate()
+    protected override void AlwaysUpdate()
     {
         Vector2 moveInput = _basicControl.BasicControl.Move.ReadValue<Vector2>();
         Debug.Log($"{moveInput}");

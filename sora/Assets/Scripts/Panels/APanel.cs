@@ -1,16 +1,94 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class APanel
 {
-    public GameObject gameObject { get; protected set; }
+    public GameObject theGameObject { get; protected set; }
+    public Transform theTransform => theGameObject.transform;
+    public RectTransform rectTransform { get; protected set; }
+
     protected APanel parent;
     protected List<APanel> children;
-    public APanel(APanel parent)
+    private GameObject Canvas; 
+
+    private bool isInit;
+    private bool isEnter;
+    private bool isSuspend;
+    protected bool isShowAfterExit;
+
+    public APanel(APanel panel)
     {
-        this.parent = parent; 
+        parent = panel;
+        children = new List<APanel>();
     }
-    protected virtual void OnFocus(){}
-    protected virtual void OnClick(){}
+    public void GameUpdate()
+    {
+        if (!isInit)
+        {
+            isInit = true;
+            OnInit();
+        }
+        foreach(APanel panel in children)
+        {
+            panel.GameUpdate();
+        }
+        if (!isSuspend)
+        {
+            OnUpdate();
+        }
+    }
+
+    protected virtual void OnInit()
+    {
+        Suspend();
+        Canvas = GameObject.Find("Canvas");
+        if (theGameObject == null)
+        {
+            theGameObject = SoraUtil.getComponentFormChildren<Transform>(Canvas, GetType().Name).gameObject;
+        }
+        rectTransform = theGameObject.GetComponent<RectTransform>();
+    }
+    protected virtual void OnEnter()
+    {
+        theGameObject.SetActive(true);
+    }
+    protected virtual void OnUpdate()
+    {
+        if (!isEnter)
+        {
+            isEnter = true;
+            OnEnter();
+        }
+    }
+    public virtual void OnExit()
+    {
+        if (!isShowAfterExit)
+        {
+            theGameObject.SetActive(false);
+        }
+        parent.isEnter = false;
+        parent.Resume();
+        Suspend();
+    }
+    public void EnterPanel<T>() where T : APanel
+    {
+        APanel panel = GetPanel<T>();
+        panel.Resume();
+        panel.isEnter = false;
+        Suspend();
+    }
+    public T GetPanel<T>() where T : APanel
+    {
+        return children.Where(x => x is T).ToArray()[0] as T;
+    }
+    public void Suspend()
+    {
+        isSuspend = true;
+    }
+    public void Resume()
+    {
+        isSuspend = false;
+    }
 }

@@ -13,6 +13,7 @@ namespace MainMenu
 
         public void GameUpdate()
         {
+            uiController.GameUpdate();
         }
     }
 }

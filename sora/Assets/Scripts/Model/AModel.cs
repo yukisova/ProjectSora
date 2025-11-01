@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AModel : MonoBehaviour
+public class AModel
 {
-    // Start is called before the first frame update
-    void Start()
+    public AModel()
     {
-        
+        OnInit();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected virtual void OnInit(){}
 }

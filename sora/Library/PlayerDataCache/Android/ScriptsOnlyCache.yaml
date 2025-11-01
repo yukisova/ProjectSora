@@ -1,19 +1,156 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp.dll:
+    - GridBuildingSystem
+    - MainMenu.GameLoop
+    - Player
+    - TestGame.GameLoop
+    Unity.InputSystem:
+    - UnityEngine.InputSystem.InputActionAsset
+    - UnityEngine.InputSystem.InputActionReference
     Unity.InputSystem.dll:
+    - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    Unity.TextMeshPro:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshProUGUI
+    Unity.Timeline.Editor.dll:
+    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-  serializedClasses: {}
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
+    - UnityEngine.UI.HorizontalLayoutGroup
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.VerticalLayoutGroup
+  serializedClasses:
+    Unity.InputSystem:
+    - UnityEngine.InputSystem.InputAction
+    - UnityEngine.InputSystem.InputActionMap
+    - UnityEngine.InputSystem.InputBinding
+    Unity.TextMeshPro:
+    - TMPro.FaceInfo_Legacy
+    - TMPro.FontAssetCreationSettings
+    - TMPro.KerningTable
+    - TMPro.TMP_Character
+    - TMPro.TMP_FontFeatureTable
+    - TMPro.TMP_FontWeightPair
+    - TMPro.TMP_GlyphAdjustmentRecord
+    - TMPro.TMP_GlyphPairAdjustmentRecord
+    - TMPro.TMP_GlyphValueRecord
+    - TMPro.TMP_Sprite
+    - TMPro.TMP_SpriteCharacter
+    - TMPro.TMP_SpriteGlyph
+    - TMPro.TMP_Style
+    - TMPro.VertexGradient
+    UnityEngine.CoreModule:
+    - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.RectOffset
+    UnityEngine.TextCoreFontEngineModule:
+    - UnityEngine.TextCore.FaceInfo
+    - UnityEngine.TextCore.Glyph
+    - UnityEngine.TextCore.GlyphMetrics
+    - UnityEngine.TextCore.GlyphRect
+    UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.Slider/SliderEvent
+    - UnityEngine.UI.SpriteState
   methodsToPreserve: []
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/MainMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 16722}
+    - Class: 114
+      Script: {instanceID: 17164}
+    - Class: 114
+      Script: {instanceID: 17398}
+    - Class: 114
+      Script: {instanceID: 17900}
+    - Class: 114
+      Script: {instanceID: 18126}
+    - Class: 114
+      Script: {instanceID: 18466}
+    - Class: 114
+      Script: {instanceID: 19170}
+    - Class: 114
+      Script: {instanceID: 19626}
+    - Class: 114
+      Script: {instanceID: 19926}
+    - Class: 114
+      Script: {instanceID: 20742}
+    - Class: 114
+      Script: {instanceID: 21384}
+    - Class: 114
+      Script: {instanceID: 21568}
+    - Class: 114
+      Script: {instanceID: 21946}
+    - Class: 114
+      Script: {instanceID: 22366}
+    - Class: 114
+      Script: {instanceID: 22428}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/TestScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -32,7 +169,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
     - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -42,9 +183,53 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 16722}
+    - Class: 114
+      Script: {instanceID: 17900}
+    - Class: 114
+      Script: {instanceID: 18126}
+    - Class: 114
+      Script: {instanceID: 18150}
+    - Class: 114
+      Script: {instanceID: 18466}
+    - Class: 114
+      Script: {instanceID: 19536}
+    - Class: 114
+      Script: {instanceID: 20362}
+    - Class: 114
+      Script: {instanceID: 20656}
+    - Class: 114
+      Script: {instanceID: 20666}
+    - Class: 114
+      Script: {instanceID: 20742}
+    - Class: 114
+      Script: {instanceID: 21384}
+    - Class: 114
+      Script: {instanceID: 21568}
+    - Class: 114
+      Script: {instanceID: 21946}
+    - Class: 114
+      Script: {instanceID: 22428}
+    - Class: 114
+      Script: {instanceID: 23164}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -121,6 +306,12 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: c898f84753a248af674267e619e6ea03
+    assemblyName: Assembly-CSharp
+    namespaceName: MainMenu
+    className: GameLoop
+  - hash:
+      serializedVersion: 2
       Hash: b12640dfdb5966813e9dd838893e6c4a
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -175,12 +366,6 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a1e88a7e82fc75be640f3569be84ce72
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: AModel
-  - hash:
-      serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
@@ -233,6 +418,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: a1bd36d0ad30bbccb2340f37ad5d5679
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Player
   - hash:
       serializedVersion: 2
       Hash: 3b5263a98bcc71d9a9d1d78a31b34ced
@@ -349,6 +540,12 @@ ScriptsOnlyBuild:
     className: ScriptMachine
   - hash:
       serializedVersion: 2
+      Hash: de149751507ddbc399cbe697725a5c1c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Testing
+  - hash:
+      serializedVersion: 2
       Hash: 43ebd945b04bced376c791411cf5a289
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -433,12 +630,6 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: bec8fa5642cad93c2ef07adac5b3a5fa
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: AController
-  - hash:
-      serializedVersion: 2
       Hash: 164a37e0bc379311785dd54beac44331
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.Editor
@@ -473,6 +664,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: a53ec247a76b69c522138da3364d11fb
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GridBuildingSystem
   - hash:
       serializedVersion: 2
       Hash: c78ed13f6b5a632d70d4f73f56ad81f2
@@ -527,6 +724,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.OnScreen
     className: OnScreenStick
+  - hash:
+      serializedVersion: 2
+      Hash: 3f6736b1dfc693ac61cd43064b94eaaf
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ProjectObjectTypeSO
   - hash:
       serializedVersion: 2
       Hash: 9078325c2a6f6a2d9612ade897511860
@@ -973,6 +1176,12 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: 7a5c67548cb1de73b3bf4fdfc785940f
+    assemblyName: Assembly-CSharp
+    namespaceName: TestGame
+    className: GameLoop
+  - hash:
+      serializedVersion: 2
       Hash: daeac1347f8039f61cd4017ff33bd3c6
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.UI
@@ -983,12 +1192,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ScrollRect
-  - hash:
-      serializedVersion: 2
-      Hash: 7776a9d3def045b2c1cbc8806a408725
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: AFacade
   - hash:
       serializedVersion: 2
       Hash: 9a174471d4db2c0c6d3ac47d2f818db1
@@ -1081,5 +1284,6 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   platform: 13
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/sora/test1.apk
+  - Assets/Scenes/MainMenu.unity
+  - Assets/Scenes/TestScene.unity
+  playerPath: D:/BuildResult/TestGame.apk

@@ -6,6 +6,7 @@ namespace TestGame
     public class Facade
     {
         PlayerController playerController;
+        UIController uiController;
         public Facade()
         {
             playerController = new PlayerController();
@@ -13,7 +14,7 @@ namespace TestGame
 
         public void GameUpdate()
         {
-            playerController.OnUpdate();
+            playerController.GameUpdate();
         }
     }
 }
