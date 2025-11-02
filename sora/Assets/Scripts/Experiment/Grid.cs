@@ -2,6 +2,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// 三维网格下的Grid，一般用于地图内的移动与定位
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class GridXZ<T>
 {
     private int width;
@@ -114,6 +118,126 @@ public class GridXZ<T>
     /// <param name="x"></param>
     /// <param name="z"></param>
     public void TriggerGridObjectChanged(int x, int z)
+    {
+    }
+}
+
+
+/// <summary>
+/// 二维下的网格，可以用于UI
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public class GridXY<T>
+{
+    private int width;
+    private int height;
+    private float cellSize;
+    private Vector2 originPosition; // 网格原点位置，默认为原点
+    private T[,] gridArray;
+    private TextMesh[,] debugTextArray;
+
+    public GridXY(int width, int height, float cellSize, Vector2 originPosition = default(Vector2), Func<GridXY<T>, int, int, T> createGridObject = null)
+    {
+        this.width = width;
+        this.height = height;
+        this.cellSize = cellSize;
+        this.originPosition = originPosition;
+
+        gridArray = new T[width, height];
+        debugTextArray = new TextMesh[width, height];
+
+        for (int x = 0; x < gridArray.GetLength(0); x++)
+        {
+            for (int y = 0; y < gridArray.GetLength(1); y++)
+            {
+                // 绘制坐标文本
+                debugTextArray[x, y] = Utils.CreateWorldText(createGridObject(this, x, y).ToString(), null, GetScreenPosition(x, y) + GetCellHalfSize(), 10, Color.white, TextAnchor.MiddleCenter);
+                // 绘制网格线（）
+                Debug.DrawLine(GetScreenPosition(x, y), GetScreenPosition(x, y + 1), Color.white, 100f);
+                Debug.DrawLine(GetScreenPosition(x, y), GetScreenPosition(x + 1, y), Color.white, 100f);
+
+            }
+        }
+        Debug.DrawLine(GetScreenPosition(0, height), GetScreenPosition(width, height), Color.white, 100f);
+        Debug.DrawLine(GetScreenPosition(width, 0), GetScreenPosition(width, height), Color.white, 100f);
+    }
+
+    public Vector2 GetScreenPosition(int x, int y)
+    {
+        return new Vector2(x, y) * cellSize + originPosition;
+    }
+    public void GetXY(Vector2 screenPosition, out int x, out int y)
+    {
+        x = Mathf.FloorToInt((screenPosition - originPosition).x / cellSize);
+        y = Mathf.FloorToInt((screenPosition - originPosition).y / cellSize);
+    }
+
+    public int GetWidth()
+    {
+        return width;
+    }
+    public int GetHeight()
+    {
+        return height;
+    }
+
+    public Vector2 GetCellHalfSize()
+    {
+        return new Vector2(cellSize, cellSize) * 0.5f;
+    }
+
+    /// <summary>
+    /// 根据网格索引设置值
+    /// </summary>
+    /// <param name="x">x</param>
+    /// <param name="y">y</param>
+    /// <param name="value">设置的值</param>
+    public void SetValue(int x, int y, T value)
+    {
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            gridArray[x, y] = value;
+            debugTextArray[x, y].text = gridArray[x, y].ToString();
+        }
+    }
+
+    /// <summary>
+    /// 根据世界坐标设置值
+    /// </summary>
+    /// <param name="screenPosition">需要另外转换成索引的世界坐标</param>
+    /// <param name="value">设置的值</param>
+    public void SetValue(Vector2 screenPosition, T value)
+    {
+        int x, y;
+        GetXY(screenPosition, out x, out y);
+        SetValue(x, y, value);
+    }
+
+    public T GetValue(int x, int y)
+    {
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            return gridArray[x, y];
+        }
+        else
+        {
+            return default(T);
+        }
+    }
+
+    public T GetValue(Vector2 screenPosition)
+    {
+        int x, y;
+        GetXY(screenPosition, out x, out y);
+        return GetValue(x, y);
+    }
+
+    /// <summary>
+    /// 修改网格中的信息（如果没有完成的话进行一定的修复）
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    public void TriggerGridObjectChanged(int x, int y)
     {
     }
 }
