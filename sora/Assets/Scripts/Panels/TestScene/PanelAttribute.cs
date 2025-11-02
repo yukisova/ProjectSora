@@ -8,7 +8,11 @@ public class PanelAttribute: APanel
     Button bagButton;
     Button shopButton;
 
-    public PanelAttribute(): base(null){}
+    public PanelAttribute(APanel parent): base(parent)
+    {
+        children.Add(new PanelBag(this));
+        children.Add(new PanelShop(this));
+    }
     protected override void OnInit()
     {
         base.OnInit();
@@ -16,7 +20,13 @@ public class PanelAttribute: APanel
         mpSlider = SoraUtil.getComponentFormChildren<Slider>(theGameObject, "Mp");
         bagButton = SoraUtil.getComponentFormChildren<Button>(theGameObject, "BagButton");
         shopButton = SoraUtil.getComponentFormChildren<Button>(theGameObject, "ShopButton");
-        bagButton.onClick.AddListener(() => {});
-        shopButton.onClick.AddListener(() => {});
+        bagButton.onClick.AddListener(() =>
+        {
+            EnterPanel<PanelBag>();
+        });
+        shopButton.onClick.AddListener(() =>
+        {
+            EnterPanel<PanelShop>();
+        });
     }
 }

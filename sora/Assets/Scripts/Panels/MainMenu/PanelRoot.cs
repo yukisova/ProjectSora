@@ -12,6 +12,9 @@ namespace MainMenu
         protected override void OnInit()
         {
             base.OnInit();
+            Resume();
+            EventCenter.Instance.RegisterObserver(EventType.OnSceneChangeComplete, () => {});
+
             exitButton = SoraUtil.getComponentFormChildren<Button>(theGameObject, "ExitButton");
             exitButton.onClick.AddListener(() => OnExitButtonClick());
             startButton = SoraUtil.getComponentFormChildren<Button>(theGameObject, "StartButton");

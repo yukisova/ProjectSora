@@ -74,6 +74,7 @@ public abstract class APanel
     }
     public void EnterPanel<T>() where T : APanel
     {
+        if (isSuspend) return;
         APanel panel = GetPanel<T>();
         panel.Resume();
         panel.isEnter = false;

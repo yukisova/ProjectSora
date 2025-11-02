@@ -29,19 +29,20 @@ public class SoraUtil
     public static bool isGenericType(Type type, Type generic)
     {
         if (type == null || generic == null) return false;
-        if (type.GetInterfaces().Any(isGeneric)) return true;
-        while (type != null && type != typeof(object))
-        {
-            if (type.GetGenericTypeDefinition() == generic) return true;
-            type = type.BaseType;
-        }
-        return false;
+        if (type.IsGenericType && type.GetGenericTypeDefinition() == generic)
+            return true;
 
-        bool isGeneric(Type type)
+        Type baseType = type.BaseType;
+        while(baseType != null && baseType != typeof(object))
         {
-            if (!type.IsGenericType) return false;
-            if (type.GetGenericTypeDefinition() == generic) return true;
-            return false;
+            if (baseType.IsGenericType && baseType.GetGenericTypeDefinition() == generic)
+                return true;
+            baseType = baseType.BaseType;
         }
+
+        return type.GetInterfaces().Any(interfaceType =>
+            interfaceType.IsGenericType &&
+            interfaceType.GetGenericTypeDefinition() == generic
+        );
     }
 }

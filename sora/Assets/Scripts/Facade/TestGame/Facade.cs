@@ -10,11 +10,13 @@ namespace TestGame
         public Facade()
         {
             playerController = new PlayerController();
+            uiController = new UIController();
         }
 
         public void GameUpdate()
         {
             playerController.GameUpdate();
+            uiController.GameUpdate();
         }
     }
 }

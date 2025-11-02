@@ -44,7 +44,6 @@ public class PlayerController: AController
     protected override void AlwaysUpdate()
     {
         Vector2 moveInput = _basicControl.BasicControl.Move.ReadValue<Vector2>();
-        Debug.Log($"{moveInput}");
         passDelta += Time.deltaTime;
         if (passDelta > 1)
         {

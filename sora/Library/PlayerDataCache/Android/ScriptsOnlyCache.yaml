@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - GridBuildingSystem
     - MainMenu.GameLoop
+    - MobileJoyStick
     - Player
     - TestGame.GameLoop
     Unity.InputSystem:
@@ -26,8 +27,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -127,13 +126,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 21384}
     - Class: 114
-      Script: {instanceID: 21568}
+      Script: {instanceID: 21570}
     - Class: 114
-      Script: {instanceID: 21946}
+      Script: {instanceID: 21950}
     - Class: 114
-      Script: {instanceID: 22366}
+      Script: {instanceID: 22370}
     - Class: 114
-      Script: {instanceID: 22428}
+      Script: {instanceID: 22432}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -206,13 +205,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 21384}
     - Class: 114
-      Script: {instanceID: 21568}
+      Script: {instanceID: 21430}
     - Class: 114
-      Script: {instanceID: 21946}
+      Script: {instanceID: 21570}
     - Class: 114
-      Script: {instanceID: 22428}
+      Script: {instanceID: 21950}
     - Class: 114
-      Script: {instanceID: 23164}
+      Script: {instanceID: 22432}
+    - Class: 114
+      Script: {instanceID: 23168}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -934,6 +935,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: f6e8a5a2a58ecd7a2d5f6705d1940d65
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MobileJoyStick
   - hash:
       serializedVersion: 2
       Hash: ef38c1407dba8c1f5d69f5db61a694fe

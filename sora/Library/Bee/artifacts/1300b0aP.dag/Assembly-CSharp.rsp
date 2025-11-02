@@ -320,6 +320,7 @@
 "Assets/Scripts/EventCenter.cs"
 "Assets/Scripts/Experiment/Grid.cs"
 "Assets/Scripts/Experiment/GridBuilding.cs"
+"Assets/Scripts/Experiment/MobileJoyStick.cs"
 "Assets/Scripts/Experiment/ProjectObjectTypeSO.cs"
 "Assets/Scripts/Experiment/Test.cs"
 "Assets/Scripts/Facade/AFacade.cs"

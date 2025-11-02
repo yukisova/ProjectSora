@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public enum EventType
 {
     OnSceneChangeComplete,
-    OnSelectPlayerFinish,
 }
 public class EventCenter: SingleTon<EventCenter>
 {
