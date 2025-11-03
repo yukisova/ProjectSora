@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using CodeMonkey.Utils;
 
 /// <summary>
 /// 三维网格下的Grid，一般用于地图内的移动与定位
@@ -30,7 +31,7 @@ public class GridXZ<T>
             for (int z = 0; z < gridArray.GetLength(1); z++)
             {
                 // 绘制坐标文本
-                debugTextArray[x, z] = Utils.CreateWorldText(createGridObject(this, x, z).ToString(), null, GetWorldPosition(x, z) + GetCellHalfSize(), 10, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x, z] = UtilsClass.CreateWorldText(createGridObject(this, x, z).ToString(), null, GetWorldPosition(x, z) + GetCellHalfSize(), 10, Color.white, TextAnchor.MiddleCenter);
                 debugTextArray[x, z].transform.rotation = Quaternion.Euler(90, 0, 0);
                 // 绘制网格线（）
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.white, 100f);
@@ -150,16 +151,8 @@ public class GridXY<T>
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                // 绘制坐标文本
-                debugTextArray[x, y] = Utils.CreateWorldText(createGridObject(this, x, y).ToString(), null, GetScreenPosition(x, y) + GetCellHalfSize(), 10, Color.white, TextAnchor.MiddleCenter);
-                // 绘制网格线（）
-                Debug.DrawLine(GetScreenPosition(x, y), GetScreenPosition(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(GetScreenPosition(x, y), GetScreenPosition(x + 1, y), Color.white, 100f);
-
             }
         }
-        Debug.DrawLine(GetScreenPosition(0, height), GetScreenPosition(width, height), Color.white, 100f);
-        Debug.DrawLine(GetScreenPosition(width, 0), GetScreenPosition(width, height), Color.white, 100f);
     }
 
     public Vector2 GetScreenPosition(int x, int y)

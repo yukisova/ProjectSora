@@ -8,7 +8,7 @@ public class PlayerController: AController
     private Transform _playerTransform;
     private BasicControll _basicControl;
 
-    GridBuildingSystem gridBuildingSystem;
+    GridXZBuild gridBuildingSystem;
     int currentX;
     int currentZ;
 
@@ -33,7 +33,7 @@ public class PlayerController: AController
         cameraController.SetChasingTarget(_player.transform);
 
         GameObject gameLoop = GameObject.Find("GameLoop");
-        gridBuildingSystem = gameLoop.GetComponent<GridBuildingSystem>();
+        gridBuildingSystem = gameLoop.GetComponent<GridXZBuild>();
 
         currentX = 0;
         currentZ = 0;
