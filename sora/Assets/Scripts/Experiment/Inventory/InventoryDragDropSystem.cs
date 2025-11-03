@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class InventoryDragDropSystem : MonoBehaviour
 {
 
     public Vector2Int currentPointGrid;
-    public Vector2Int originPointGrid; /// 物品原本的位置
+    public Vector2Int originPointGrid = Vector2Int.zero; /// 物品原本的位置
     InventoryGridMap[][] gridMaps;
     private GridLayoutGroup gridLayoutGroup;
     List<InventoryDragDrop> dragDrops;
@@ -26,7 +27,7 @@ public class InventoryDragDropSystem : MonoBehaviour
             .ToArray();
 
         dragDrops = GetComponentsInChildren<InventoryDragDrop>().ToList();
-        foreach(InventoryDragDrop dragDrop in dragDrops)
+        foreach (InventoryDragDrop dragDrop in dragDrops)
         {
             dragDrop.FinishDragAction = (item) =>
             {
@@ -37,7 +38,7 @@ public class InventoryDragDropSystem : MonoBehaviour
                 }
                 else
                 {
-                    item.transform.position = gridMaps[index.x][index.y].transform.position; 
+                    item.transform.position = gridMaps[index.x][index.y].transform.position;
                 }
             };
             dragDrop.StartDragAction = (item) =>
@@ -46,6 +47,7 @@ public class InventoryDragDropSystem : MonoBehaviour
             };
         }
     }
+
     private void Update()
     {
         Vector2 mousePosition = TryGetInputPoint();
