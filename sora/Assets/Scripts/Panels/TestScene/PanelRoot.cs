@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace TestGame
 {
     public class PanelRoot: APanel

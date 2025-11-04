@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
+using System.Threading.Tasks;
 
 public abstract class APanel
 {
@@ -53,6 +55,7 @@ public abstract class APanel
     protected virtual void OnEnter()
     {
         theGameObject.SetActive(true);
+        OnFadeIn();
     }
     protected virtual void OnUpdate()
     {
@@ -64,6 +67,7 @@ public abstract class APanel
     }
     public virtual void OnExit()
     {
+        OnFadeOut();
         if (!isShowAfterExit)
         {
             theGameObject.SetActive(false);
@@ -84,12 +88,15 @@ public abstract class APanel
     {
         return children.Where(x => x is T).ToArray()[0] as T;
     }
-    public void Suspend()
+    public virtual void Suspend()
     {
         isSuspend = true;
     }
-    public void Resume()
+    public virtual void Resume()
     {
         isSuspend = false;
     }
+
+    protected virtual void OnFadeIn(){}
+    protected virtual void OnFadeOut(){}
 }

@@ -32,6 +32,7 @@ public class GridXZ<T>
             {
                 // 绘制坐标文本
                 debugTextArray[x, z] = UtilsClass.CreateWorldText(createGridObject(this, x, z).ToString(), null, GetWorldPosition(x, z) + GetCellHalfSize(), 10, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x, z].characterSize = 0.2f;
                 debugTextArray[x, z].transform.rotation = Quaternion.Euler(90, 0, 0);
                 // 绘制网格线（）
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.white, 100f);

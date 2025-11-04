@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerController: AController
@@ -38,7 +39,7 @@ public class PlayerController: AController
         currentX = 0;
         currentZ = 0;
         _playerTransform = _player.transform;
-        UpdatePosition();
+        UpdatePosition(false);
     }
 
     protected override void AlwaysUpdate()
@@ -59,11 +60,20 @@ public class PlayerController: AController
         cameraController.OnUpdate();
     }
 
-    private void UpdatePosition()
+    private void UpdatePosition(bool useTween = true)
     {
         float originY = _playerTransform.position.y;
-        _playerTransform.position = gridBuildingSystem.grid.GetWorldPosition(currentX, currentZ) + gridBuildingSystem.grid.GetCellHalfSize();
-        _playerTransform.position = new Vector3(_playerTransform.position.x, originY, _playerTransform.position.z);
- 
-    }
+         // 使用Dotween进行位移
+        Vector3 targetPosition = gridBuildingSystem.grid.GetWorldPosition(currentX, currentZ) + gridBuildingSystem.grid.GetCellHalfSize();
+        targetPosition = new Vector3(targetPosition.x, originY, targetPosition.z);
+
+        if (!useTween)
+        {
+            _playerTransform.position = targetPosition;
+            return;
+        }
+        _playerTransform.DOMove(targetPosition, 1f)
+            .SetEase(Ease.OutCubic)  // 设置缓动类型为线性
+            .OnComplete(() => Debug.Log("位移完成"));  // 动画完成回调
+   }
 }

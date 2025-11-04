@@ -1,39 +1,35 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 public class PanelBag: APanel
 {
     Button closeButton;
-    List<Button> gridButtons;
-    public PanelBag(APanel parent) : base(parent)
-    {
-
-    }
+    public PanelBag(APanel parent) : base(parent) { }
 
     protected override void OnInit()
     {
         base.OnInit();
 
+        isShowAfterExit = true;
         closeButton = SoraUtil.getComponentFormChildren<Button>(theGameObject, "CloseButton");
-        // gridButtons = theGameObject.GetComponentsInChildren<SymbolGridInventory>().Select(e => e.gameObject.GetComponent<Button>()).ToList();
-
-        // foreach(Button gridButton in gridButtons)
-        // {
-        //     gridButton.onClick.AddListener(() =>
-        //     {
-
-        //     });
-        // }
 
         closeButton.onClick.AddListener(() =>
         {
             OnExit();
         });
     }
-}
 
-public class SymbolGridInventory: MonoBehaviour
-{
+    protected override void OnFadeIn()
+    {
+        rectTransform.localScale = Vector3.zero;
+        rectTransform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
+    }
 
+    protected override void OnFadeOut()
+    {
+        rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack);
+    }
 }

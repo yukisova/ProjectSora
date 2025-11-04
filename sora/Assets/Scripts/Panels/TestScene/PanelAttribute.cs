@@ -29,4 +29,25 @@ public class PanelAttribute: APanel
             EnterPanel<PanelShop>();
         });
     }
+
+    public override void Suspend()
+    {
+        base.Suspend();
+        if (bagButton != null && shopButton != null)
+        {
+            bagButton.interactable = false;
+            shopButton.interactable = false;
+        }
+   } 
+
+    public override void Resume()
+    {
+        base.Resume();
+        if (bagButton != null && shopButton != null)
+        {
+            bagButton.interactable = true;
+            shopButton.interactable = true;
+        }
+    }
+
 }
