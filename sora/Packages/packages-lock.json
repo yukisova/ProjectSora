@@ -83,11 +83,30 @@
       "dependencies": {},
       "url": "https://packages.unity.cn"
     },
+    "com.unity.postprocessing": {
+      "version": "3.4.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "url": "https://packages.unity.cn"
+    },
     "com.unity.settings-manager": {
       "version": "2.1.0",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
+    "com.unity.terrain-tools": {
+      "version": "5.0.6",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.modules.terrainphysics": "1.0.0"
+      },
       "url": "https://packages.unity.cn"
     },
     "com.unity.test-framework": {

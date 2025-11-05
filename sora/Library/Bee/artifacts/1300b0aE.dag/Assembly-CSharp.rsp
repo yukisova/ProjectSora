@@ -123,6 +123,7 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:DOTWEEN
+-define:UNITY_POST_PROCESSING_STACK_V2
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"/Users/sora/Downloads/OwnerApplication/2022.3.62f2c1/PlaybackEngines/AndroidPlayer/Unity.Android.Gradle.dll"
@@ -339,8 +340,12 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/Unity.Postprocessing.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/Unity.Postprocessing.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.Rider.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.Settings.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/Unity.TerrainTools.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/Unity.TerrainTools.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.TestTools.CodeCoverage.Editor.ref.dll"
